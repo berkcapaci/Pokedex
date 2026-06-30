@@ -1,11 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="stylesheet" href="CSS/media.css" />
+    <link rel="stylesheet" href="CSS/dialog.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+  <body onload="init()">
+    <header>
+      <div class="header-content">
+        <div>
+          <img src="" class="logo" alt="Logo" />
+        </div>
+        <div class="search-container">
+          <input id="search-input" type="text" placeholder="Search Pokemon" />
+          <button id="search-button">Search'em all</button>
+        </div>
+      </div>
+    </header>
+    <h1>Pokedex</h1>
+    <main>
+      <section id="pokemon-container"></section>
+      <button id="load-more-button">Load More</button>
+    </main>
+
+    <dialog id="pokemon-dialog">
+
+    </dialog>
+
+    <script src="api.js"></script>
+    <script src="templates.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
