@@ -135,7 +135,7 @@ main{
     opacity: 0.6;
 }
 
-.pokomon-image{
+.pokemon-image{
     display: block;
     margin: 0 auto;
     width: 120px;
@@ -143,6 +143,16 @@ main{
     margin-bottom: 8px;
 }
 
-.pokemon-card img
+.pokemon-types{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 
-.pokemon-types
+.pokemon-types span {
+    padding: 6px 12px;
+    border-radius: 999px;
+    text-align: center;
+    color: black;
+    font-size: 12px;
+}
