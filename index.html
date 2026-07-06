@@ -7,32 +7,57 @@
     <link rel="stylesheet" href="CSS/style.css" />
     <link rel="stylesheet" href="CSS/media.css" />
     <link rel="stylesheet" href="CSS/dialog.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="assets/images/logos/logo.png"
+      type="image/x-icon"
+    />
   </head>
   <body onload="init()">
     <header>
       <div class="header-content">
         <div>
-          <img src="" class="logo" alt="Logo" />
+          <img src="assets/images/logos/logo.png" class="logo" alt="Logo" />
         </div>
         <div class="search-container">
-          <input id="search-input" type="text" placeholder="Search Pokemon" />
+          <input id="search-input" type="text" placeholder="Search Pokémon" />
           <button id="search-button">Search'em all</button>
+          <p id="search-message"></p>
         </div>
       </div>
     </header>
-    <h1>Pokedex</h1>
+    <h1>Pokédex</h1>
     <main>
       <section id="pokemon-container"></section>
-      <button id="load-more-button">Load More</button>
+      <button id="load-more-button" onclick="loadPokemon()">Load More</button>
+      <div id="loading" class="loading">
+        <div class="spinner"></div>
+      </div>
     </main>
+    <footer>
+      <div class="footer-content">
+        <p>&copy; 2026 Pokédex App</p>
+        <p>
+          Powered by
+          <a
+            href="https://pokeapi.co/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            PokéAPI
+          </a>
+        </p>
+        <p>Created by Berk Capaci</p>
+      </div>
+    </footer>
 
-    <dialog id="pokemon-dialog">
-
-    </dialog>
+    <dialog id="pokemon-dialog"></dialog>
     <script src="constants.js"></script>
     <script src="api.js"></script>
     <script src="templates.js"></script>

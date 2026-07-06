@@ -20,6 +20,13 @@ body{
     font-family: "Poppins", sans-serif;
 }
 
+main{
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 32px 48px;
+}
+
+
 header{
     background-color: white;
     border-bottom: 1px solid #e5e5e5;
@@ -77,12 +84,6 @@ h1{
 
 }
 
-main{
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 32px 48px;
-}
-
 #pokemon-container{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -109,12 +110,15 @@ main{
     border-radius: 16px;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
-    transition: .2s;
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
     cursor: pointer;
 }
 
 .pokemon-card:hover{
     transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0,0,0,.22);
 }
 
 .pokemon-header{
@@ -155,4 +159,39 @@ main{
     text-align: center;
     color: black;
     font-size: 12px;
+}
+
+footer {
+    margin-top: 64px;
+    background-color: white;
+    border-top: 1px solid #e5e5e5;
+}
+
+.footer-content {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 24px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+    color: #666;
+}
+
+.footer-content a {
+    color: #2D6CDF;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color .2s ease;
+}
+
+.footer-content a:hover {
+    color: #2257B2;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
