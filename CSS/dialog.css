@@ -141,8 +141,6 @@ dialog::backdrop{
     border-bottom: 3px solid white;
 }
 
-
-
 .evolution-list {
     display: flex;
     justify-content: center;
