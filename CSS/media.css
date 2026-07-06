@@ -178,6 +178,24 @@
 }
 
 /* ===========================
+   420px
+=========================== */
+
+@media (max-width: 420px) {
+
+    .search-container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .search-container input,
+    .search-container button {
+        width: 100%;
+    }
+
+}
+
+/* ===========================
    360px
 =========================== */
 
