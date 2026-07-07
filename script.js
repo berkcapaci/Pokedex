@@ -4,6 +4,7 @@ let pokemonList = [];
 let currentPokemonIndex = 0;
 let currentDialogPokemon = null;
 let currentTab = "about";
+let isLoading = false;
 
 let limit = 20;
 let offset = 0;
@@ -68,6 +69,7 @@ async function searchPokemon() {
     if (searchTerm.length === 0) {
         searchMessage.textContent = "";
         renderPokemonCards(allPokemon);
+        loadMoreButton.classList.remove("hidden");
         return;
     }
     if (searchTerm.length < 3) {
@@ -82,16 +84,18 @@ async function searchPokemon() {
         pokemon.name.includes(searchTerm)
     );
     if (matches.length === 0) {
-        renderPokemonCards([]);
-        searchMessage.textContent = "Pokémon not found.";
-        return;
-    }
+    renderPokemonCards([]);
+    loadMoreButton.classList.add("hidden");
+    searchMessage.textContent = "";
+    return;
+}
     const pokemonDetails = await Promise.all(
         matches.map((pokemon) =>
             fetchPokemonByName(pokemon.name)
         )
     );
     renderPokemonCards(pokemonDetails);
+    loadMoreButton.classList.add("hidden");
 
     } catch (error) {
     console.error(error);
@@ -103,6 +107,10 @@ async function searchPokemon() {
 }    
 
 async function loadPokemon() {
+    if (isLoading) {
+        return;
+    }
+    isLoading = true;
     showLoading();
     try {
         const newPokemon = await fetchPokemonList(limit, offset);
@@ -112,6 +120,7 @@ async function loadPokemon() {
     } catch (error) {
         console.error(error);
     } finally {
+        isLoading = false
         hideLoading();
     }
 }
@@ -119,10 +128,15 @@ async function loadPokemon() {
 function renderPokemonCards(pokemonList = allPokemon) {
     displayedPokemon = pokemonList;
     pokemonContainer.innerHTML = "";
+    if (pokemonList.length === 0) {
+        pokemonContainer.innerHTML = getEmptyStateTemplate();
+        return;
+    }
     let content = "";
     pokemonList.forEach((pokemon, index) => {
         content += getPokemonCardTemplate(pokemon, index);
     });
+
     pokemonContainer.innerHTML = content;
 }
 
@@ -159,13 +173,11 @@ function closePokemonDialog() {
 }
 
 function showLoading() {
-    loadMoreButton.classList.add("hidden");
     loading.classList.add("show");
 }
 
 function hideLoading() {
     loading.classList.remove("show");
-    loadMoreButton.classList.remove("hidden");
 }
 
 function showNextPokemon() {

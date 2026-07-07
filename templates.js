@@ -198,3 +198,12 @@ function getEvolutionTemplate(evolutionList) {
         </div>
     `;
 }
+
+function getEmptyStateTemplate() {
+    return `
+        <div class="empty-state">
+            <h2>Pokémon not found.</h2>
+            <p>Try searching for another Pokémon.</p>
+        </div>
+    `;
+}

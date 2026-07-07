@@ -18,10 +18,15 @@ body{
     background-color: #f5f5f5;
     color: #2c2c2c;
     font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 main{
     max-width: 1440px;
+    width: 100%;
+    flex: 1;
     margin: 0 auto;
     padding: 0 32px 48px;
 }
@@ -100,6 +105,11 @@ h1{
     color: white;
     cursor: pointer;
     transition: 0.2s;
+}
+
+#load-more-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 #load-more-button:hover {
@@ -194,4 +204,22 @@ footer {
     to {
         transform: rotate(360deg);
     }
+}
+
+.hidden {
+    display: none !important;
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.empty-state h2 {
+    margin-bottom: 12px;
+}
+
+.empty-state p {
+    color: #666;
 }
