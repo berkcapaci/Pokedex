@@ -27,7 +27,7 @@ async function init() {
 
 function closeDialogOnBackdrop(event) {
     if (event.target === pokemonDialog) {
-        pokemonDialog.close();
+        closePokemonDialog();
     }
 }
 
@@ -107,20 +107,16 @@ async function searchPokemon() {
 }    
 
 async function loadPokemon() {
-    if (isLoading) {
-        return;
-    }
-    isLoading = true;
     showLoading();
     try {
         const newPokemon = await fetchPokemonList(limit, offset);
         allPokemon.push(...newPokemon);
         renderPokemonCards();
         offset += limit;
+        loadMoreButton.classList.remove("hidden");
     } catch (error) {
         console.error(error);
     } finally {
-        isLoading = false
         hideLoading();
     }
 }
@@ -146,7 +142,9 @@ function openPokemonDialog(index) {
     currentTab = "about";
     renderPokemonDialog();
     pokemonDialog.showModal();
+    document.body.style.overflow = "hidden";
 }
+
 function renderPokemonDialog() {
     const showNavigation = displayedPokemon === allPokemon;
 
@@ -170,9 +168,11 @@ function renderPokemonDialog() {
 
 function closePokemonDialog() {
     pokemonDialog.close();
+    document.body.style.overflow = "";
 }
 
 function showLoading() {
+    loadMoreButton.classList.add("hidden");
     loading.classList.add("show");
 }
 
